@@ -407,12 +407,15 @@ function generateRandomString($length = 10) {
 echo 'Enter Reff Code : '; 
 $reffCode = trim(fgets(STDIN)); 
 
-echo 'Enter Phone Number : '; 
+echo 'Country Code (62 / 1) : '; 
+$countryCode = trim(fgets(STDIN)); 
+
+echo 'Enter Phone Number (838200xxx indo / 251xxxxx us) : ';
 $phone_number = trim(fgets(STDIN)); 
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, 'https://api.oyorooms.com/v2/users/generate_otp?phone='.$phone_number.'&nod=4&intent=login&sms_auto_retrieval=true&country_code=%2B1&version=20233&partner_app_version=20233&android_id='.generateRandomString(16).'&idfa=&sid=1551940465205');
+curl_setopt($ch, CURLOPT_URL, 'https://api.oyorooms.com/v2/users/generate_otp?phone='.$phone_number.'&nod=4&intent=login&sms_auto_retrieval=true&country_code=%2B'.$countryCode.'&version=20233&partner_app_version=20233&android_id='.generateRandomString(16).'&idfa=&sid=1551940465205');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
